@@ -17,3 +17,6 @@ Go to cypress project root and run:
 ## Run codeceptjs
 Go to codeceptjs project root and run:
 `npm run test:run`
+
+## Run specific test
+`npm run test:run -- --grep '@specificTag'`

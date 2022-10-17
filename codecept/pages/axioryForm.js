@@ -29,7 +29,9 @@ class axioryForm {
       phone: '//input[@id="phone"]',
       country: '//input[@id="countryLabel"]',
       email: '//input[@id="email"]',
-      deposit: '//input[@id="deposit"]'
+      deposit: '//input[@id="deposit"]',
+      chatWindowFirstName: '(//input[@data-garden-id="forms.input"])[1]',
+      chatWindowLastName: '(//input[@data-garden-id="forms.input"])[2]',      
   }
 
   selectBoxes = {
@@ -56,11 +58,16 @@ class axioryForm {
   }
 
   buttons = {
-      submit: '//div[@class="atm-submit-container"]'
+      submit: '//div[@class="atm-submit-container"]',
+      chat: '//iframe[@id="launcher"]'
   }
 
   footers = {
     footer: '//div[@class="cmpnt-footer-container"]'
+  }
+
+  messages = {
+    error1: '(//div[@class="error-messages"])[1]'
   }
 
   checkLogo() {
@@ -147,6 +154,15 @@ class axioryForm {
   clickAccept() {
       I.waitForElement(this.buttons.submit, 10)
       I.click(this.buttons.submit)
+  }
+
+  openChatWindow() {
+    I.waitForElement(this.buttons.chat, 10);
+    I.click(this.buttons.chat);
+  }
+
+  checkUrl(string) {
+    I.seeInCurrentUrl('registration/demo')
   }
 
 }
