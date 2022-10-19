@@ -80,6 +80,47 @@ Scenario('filling form - incorrect name', async ({ I, axioryFormPage, axioryRegi
     axioryFormPage.checkUrl();
 }).tag('@nameWrong')
 
+Scenario('filling form - last name missing', async ({ I, axioryFormPage, axioryRegisterPage }) => {
+    I.amOnPage('https://revolgy-forms-case-study-master.staging.axiory.com/jp/registration/demo');
+    axioryFormPage.checkLogo();
+    axioryFormPage.checkParagraph();
+    axioryFormPage.checkIAgreeSection();
+    axioryFormPage.checkFooter();
+    axioryFormPage.enterFirstName('Yoko');
+    axioryFormPage.enterLastName('');
+    axioryFormPage.enterPhone('+777 777 777');
+    axioryFormPage.enterCountry('Jap');
+    axioryFormPage.enterEmail(brandNewMail);
+    axioryFormPage.selectPlatform('MetaTrader4');
+    axioryFormPage.selectAccountType('Standard (STP)');
+    axioryFormPage.selectLeverage('1:1');
+    axioryFormPage.selectCurrency('JPY');
+    axioryFormPage.enterAmount('1000');
+    axioryFormPage.tickCheckbox();
+    axioryFormPage.clickAccept();
+}).tag('@lastnameMissing')
+
+Scenario('filling form - first name missign', async ({ I, axioryFormPage, axioryRegisterPage }) => {
+    I.amOnPage('https://revolgy-forms-case-study-master.staging.axiory.com/jp/registration/demo');
+    axioryFormPage.checkLogo();
+    axioryFormPage.checkParagraph();
+    axioryFormPage.checkIAgreeSection();
+    axioryFormPage.checkFooter();
+    axioryFormPage.enterFirstName('');
+    axioryFormPage.enterLastName('ono');
+    axioryFormPage.enterPhone('+777 777 777');
+    axioryFormPage.enterCountry('Jap');
+    axioryFormPage.enterEmail(brandNewMail);
+    axioryFormPage.selectPlatform('MetaTrader4');
+    axioryFormPage.selectAccountType('Standard (STP)');
+    axioryFormPage.selectLeverage('1:1');
+    axioryFormPage.selectCurrency('JPY');
+    axioryFormPage.enterAmount('1000');
+    axioryFormPage.tickCheckbox();
+    axioryFormPage.clickAccept();
+    axioryRegisterPage.checkRegisterPage();
+}).tag('@firstnameMissing')
+
 Scenario('chat-box checking', async ({ I, axioryFormPage, axioryRegisterPage }) => {
     I.amOnPage('https://revolgy-forms-case-study-master.staging.axiory.com/jp/registration/demo');
     axioryFormPage.checkLogo();
